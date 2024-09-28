@@ -18,9 +18,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 
-app.get('/',(req,res)=>{
-    res.send("iWrote")
-})
+//Routes
+import userRouter from "./routes/user.routes.js"
+app.use("/api/auth", userRouter)
+
 
 
 app.listen(process.env.PORT, () => {
