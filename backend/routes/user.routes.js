@@ -2,11 +2,14 @@ import express from "express"
 import User from "../models/User.model.js"
 import {body, validationResult} from "express-validator"
 import jwt from "jsonwebtoken"
-
+import verifyUser from "../middleware/auth.middleware.js"
+import StickyNote from "../models/StickNote.model.js"
+import Note from "../models/Note.model.js"
+import Task from "../models/Task.model.js"
 
 const router = express.Router()
 
-const jwtSeceret = process.env.JWT_SECERET
+const jwtSeceret = process.env.JWT_SECRET
 
 
 // Registering a User to database
@@ -78,5 +81,28 @@ router.post("/login",
     res.status(200).json({message: "User Logged In successfully", authToken: authToken})
     });    
 
+//Route to delete user account
+router.delete('/deleteuser', verifyUser, async (req, res) => {
+    try {
+        const userId = req.user.id;  
+
+        // Find and delete the user
+        const user = await User.findByIdAndDelete(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Optionally delete related data (tasks, notes, sticky notes)
+        await Task.deleteMany({ owner: userId });
+        await StickyNote.deleteMany({ owner: userId });
+        await Note.deleteMany({ owner: userId });
+
+        res.json({ message: 'Account and related data deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+   
     
 export default router
