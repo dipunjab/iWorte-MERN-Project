@@ -20,7 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 
 //Routes
 import userRouter from "./routes/user.routes.js"
+import noteRouter from "./routes/note.routes.js"
+
 app.use("/api/auth", userRouter)
+app.use("/api/note", noteRouter)
 
 
 

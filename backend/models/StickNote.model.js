@@ -7,6 +7,9 @@ const stickyNoteSchema = new Schema({
         type: String,
         required: true,
     },
+    color:{
+        type: String
+    },
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User",

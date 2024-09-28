@@ -47,7 +47,7 @@ router.post("/createuser",
         }
     });
 
-
+//Route to Login user and generate header auth token
 router.post("/login", 
     [
      body('email', "Enter a valid email").isEmail(),
