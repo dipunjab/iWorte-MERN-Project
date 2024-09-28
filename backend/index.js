@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 import userRouter from "./routes/user.routes.js"
 import noteRouter from "./routes/note.routes.js"
 import taskRouter from "./routes/task.routes.js"
-import stickyNoteRouter from "./routes/task.routes.js"
+import stickyNoteRouter from "./routes/stickyNote.routes.js"
 
 app.use("/api/auth", userRouter)
 app.use("/api/note", noteRouter)
