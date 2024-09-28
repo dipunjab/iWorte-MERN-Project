@@ -1,3 +1,6 @@
+//No doubt the backend can be a lot more better with more features for now its good will work more on this
+// Backend is complete, now moving on to the frontend development.
+
 import 'dotenv/config'
 import connectDB from './dataBase.js';
 
