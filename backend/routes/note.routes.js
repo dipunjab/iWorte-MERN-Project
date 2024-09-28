@@ -29,14 +29,13 @@ router.post("/addnote", verifyUser,
         if(!note) return req.status(400).json({message: "Failed to create Note"})
 
         res.status(200).json({success: "Note Created Successfully", data: note})    
-    });
+});
 
 // Router to update/Edit note
 router.put("/updatenote/:id", verifyUser, 
     [
         // Validate title: should be at least 3 characters long (optional)
         body('title', "Enter min 3 characters title").optional().isLength({ min: 3 }),
-        
         // Validate content: should be at least 5 characters long (optional)
         body('content', "Enter a min 5 characters content.").optional().isLength({ min: 5 })
     ],
@@ -77,6 +76,33 @@ router.put("/updatenote/:id", verifyUser,
         res.status(200).json({ message: "Note updated successfully", data: updateNote });    
     }
 );
-    
+
+//Router to delete note
+router.delete("/deletenote/:id", verifyUser, async(req,res)=>{
+    //id of a note to be deleted
+    const {id} = req.params 
+
+    const note = await Note.findById(id)
+    if(!note) return res.status(400).json({message: "Note doesn't exists"})
+
+    if (note.owner.toString() !== req.user.id) {
+        return res.status(401).json("You are not Allowed"); 
+    }     
+
+    //It will find the note by id and delete it
+    const deleteNote = await Note.findByIdAndDelete(id)
+    if(!deleteNote) return res.status(400).json({message: "Failed to Delete Note"})
+
+     res.status(200).json({success: "Note Deleted Successfully", data: deleteNote})   
+});
+
+//Router to get all the notes of user
+router.get("/getallnote", verifyUser,async(req,res)=>{
+    const notes =  await Note.find({owner: req.user.id})
+    if(!notes) return res.status(400).json({message: "Failed to fetch notes"})
+
+    res.status(200).json({success: "All notes fetched successfully", data: notes})
+});
+
 
 export default router
