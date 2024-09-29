@@ -1,0 +1,45 @@
+.dashboardHeading{
+    padding: 20px;
+    text-align: center;
+}
+
+.dashboardHeading  h1{
+    font-weight: 700;
+    color: #535353;
+}
+
+
+
+@media (min-width: 786px){
+    .notes-box, .task-box, .stickywall-box{
+        width: 50rem;
+        margin-left: 12rem;
+    }
+    .card{
+        width: 15rem;
+    }
+    .view-btn{
+        font-size: 15px;
+        height: 40px;
+        margin-right: 7px;
+    }
+    .notes-h1{
+        margin-left: 8px;
+    }
+    
+}
+
+@media (max-width: 786px){
+    .card{
+        width: 14rem;
+    }
+    .view-btn{
+        font-size: 15px;
+        height: 40px;
+        margin-right: 19px;
+    }
+    .notes-h1{
+        margin-left: 8px;
+    }
+
+}

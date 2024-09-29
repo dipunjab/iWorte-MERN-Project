@@ -1,10 +1,16 @@
-import './App.css'
-import i from "./assets/i.png"
+import Dashboard from "./components/Dashboard/Dashboard"
+import Logo from "./components/iWroteLogo/Logo"
+import SideBar from "./components/Sidebar/SideBar"
+
 function App() {
 
   return (
     <>
-        <img src={i} alt="" />
+      <div>
+          <SideBar/>
+          <Logo/>
+      </div>
+        <Dashboard/>
     </>
   )
 }

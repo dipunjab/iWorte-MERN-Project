@@ -1,0 +1,80 @@
+/* for desktop view */
+.sidebar{
+    width: 10rem;
+    height: 33rem;
+    margin: 50px 8px;
+    border-radius: 20px;
+    position: fixed;
+    background-color: #c7c3c3;
+    padding: 4px;
+    display: block;
+}
+.sidebar .menuhead h1{
+    text-align: center;
+    font-weight: 700;
+    font-size: 35px;
+    color: #6b6a6a;
+    padding: 3px;
+}
+
+.nav-item li{
+    list-style: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: black;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.nav-item li img{
+    width: 20px;
+    height: 20px;
+    margin: 0px 3px;
+}
+
+.upper-items{
+    margin-top: 20px;
+}
+.lower-items{
+    margin-top: 200px;
+}
+
+
+/* For mobile */
+.sidebar-mobile{
+    display: none;
+}
+.nav-item-ul-mobile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.nav-item-ul-mobile li{
+    list-style: none;
+    margin: 5px 10px;
+    cursor: pointer;
+}
+.nav-item-ul-mobile li img{
+    width: 25px;
+    height: 25px;
+}
+
+@media (max-width: 786px){
+    .sidebar{
+        display: none;
+    }
+    .sidebar-mobile{
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #e6dddd;
+        padding: 10px 0;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 2px solid #c7c3c3;
+        z-index: 1000;
+
+    }
+    
+}
