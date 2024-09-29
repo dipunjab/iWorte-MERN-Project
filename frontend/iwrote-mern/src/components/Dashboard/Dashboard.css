@@ -21,7 +21,7 @@
     .view-btn{
         font-size: 15px;
         height: 40px;
-        margin-right: 7px;
+        margin-right: 40px;
     }
     .notes-h1{
         margin-left: 8px;
@@ -31,7 +31,7 @@
 
 @media (max-width: 786px){
     .card{
-        width: 14rem;
+        width: 13rem;
     }
     .view-btn{
         font-size: 15px;
