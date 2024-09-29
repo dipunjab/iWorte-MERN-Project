@@ -8,6 +8,7 @@ import {
   Routes,
   Route
 } from "react-router-dom"
+import RightBar from "./components/RightSidebar/Rightbar.jsx"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <div>
             <SideBar/>
             <Logo/>
+            <RightBar/>
         </div>
           <Routes>
             <Route path="/" element={<Dashboard/>}/>
