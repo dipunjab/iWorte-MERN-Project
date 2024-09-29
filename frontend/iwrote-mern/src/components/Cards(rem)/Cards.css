@@ -1,4 +1,7 @@
-
+.card:hover{
+    cursor: pointer;
+    background-color: azure;
+}
 .editbtn{
     cursor: pointer;
 }
