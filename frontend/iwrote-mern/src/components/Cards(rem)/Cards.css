@@ -1,0 +1,70 @@
+
+.editbtn{
+    cursor: pointer;
+}
+@media (min-width: 786px){
+    .notes-box, .task-box, .stickywall-box{
+        width: 50rem;
+        margin-left: 12rem;
+    }
+    .card{
+        width: 15rem;
+    }
+    .view-btn{
+        font-size: 15px;
+        height: 40px;
+        margin-right: 40px;
+    }
+    .notes-h1{
+        margin-left: 8px;
+    }
+    .editbtn{
+        width: 20px;
+        height: 20px;
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 786px){
+    .card{
+        width: 12rem;
+    }
+    .view-btn{
+        font-size: 15px;
+        height: 40px;
+        margin-right: 19px;
+    }
+    .notes-h1{
+        margin-left: 8px;
+    }
+    .editbtn{
+        width: 20px;
+        height: 20px;
+        margin-left: 8px;
+    }
+}
+@media (max-width: 500px){
+    .card{
+        width: 7rem;
+        height: 10rem;
+    }
+    .card-title{
+        font-size: 12px;
+    }
+    .card-text{
+        font-size: 10px;
+    }
+    .view-btn{
+        font-size: 15px;
+        height: 40px;
+        margin-right: 19px;
+    }
+    .notes-h1{
+        margin-left: 8px;
+    }
+    .editbtn{
+        width: 12px;
+        height: 12px;
+        margin-left: 2px;
+    }
+}

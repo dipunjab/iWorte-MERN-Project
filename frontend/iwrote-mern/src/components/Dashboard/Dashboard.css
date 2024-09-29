@@ -8,38 +8,22 @@
     color: #535353;
 }
 
-
-
-@media (min-width: 786px){
-    .notes-box, .task-box, .stickywall-box{
-        width: 50rem;
-        margin-left: 12rem;
-    }
-    .card{
-        width: 15rem;
-    }
-    .view-btn{
-        font-size: 15px;
-        height: 40px;
-        margin-right: 40px;
-    }
-    .notes-h1{
-        margin-left: 8px;
-    }
-    
+.calenderContainer{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 6px;
+    width: 20rem;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-@media (max-width: 786px){
-    .card{
-        width: 13rem;
+.calender{
+    transform: scale(0.7);
+}
+@media (max-width: 800px){
+    .calender{
+    display: none;        
     }
-    .view-btn{
-        font-size: 15px;
-        height: 40px;
-        margin-right: 19px;
-    }
-    .notes-h1{
-        margin-left: 8px;
-    }
-
 }

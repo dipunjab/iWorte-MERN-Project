@@ -1,0 +1,22 @@
+.welcomeContainer{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 20rem;
+    padding: 15px;
+    text-align: center;
+    margin: 10px 20px;
+}
+
+.inspPicture img{
+    width: 300px;
+    height: 200px;
+}
+
+
+
+@media (max-width: 800px){
+    .welcomeContainer{
+        display: none;
+    }
+}
