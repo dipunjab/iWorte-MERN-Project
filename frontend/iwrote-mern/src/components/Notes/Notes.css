@@ -1,0 +1,30 @@
+.addNotebtn img{
+    width: 50px;
+    height: 50px;
+}
+.addNotebtn{
+    background-color: azure;
+    border-radius: 20px;
+}
+
+.addNoteContainer{
+    width: 40rem;
+    height: 5rem;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+@media (max-width: 786px){
+    .addNoteContainer{
+        width: 20rem;
+        height: 5rem;
+        padding: 20px;
+        margin-top: 30px;
+    }
+    .contentarea{
+        width: 50rem;
+    }
+    .contentInput textarea{
+        width: 20rem;
+    }
+}

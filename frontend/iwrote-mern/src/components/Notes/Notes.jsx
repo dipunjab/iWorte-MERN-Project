@@ -1,12 +1,17 @@
 import React from 'react'
 import Cards from "../Cards(rem)/Cards"
+import AddNote from './AddNote'
+import addnotepng from "../../assets/addnote.png"
+import "./Notes.css"
+import { useNavigate } from 'react-router-dom'
 
-function Notes(props) {
 
-  const handleEdit = ()=>{
+function Notes() {
+  const navigate = useNavigate()
 
+  const handleAddnote = ()=>{
+    navigate("/addnote")
   }
-  const handleDelete = ()=>{}
 
   return (
     <>
@@ -14,7 +19,12 @@ function Notes(props) {
         <div className='dashboardHeading'>
           <h1>Notes</h1>
         </div>
-        <Cards notes={props.notes} editbtn={handleEdit} deletebtn={handleDelete} display="none"/>
+        <div>
+          <button onClick={()=>(handleAddnote())} className='addNotebtn'><img src={addnotepng} alt="addnote" /><span>Add Note</span></button>
+        </div>  
+        <div>
+          <Cards display="none"/>
+        </div>
       </div>
     </>
   )

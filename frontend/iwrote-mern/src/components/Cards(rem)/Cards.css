@@ -1,4 +1,4 @@
-.card:hover{
+.card-text:hover{
     cursor: pointer;
     background-color: azure;
 }
@@ -8,7 +8,6 @@
 @media (min-width: 786px){
     .notes-box, .task-box, .stickywall-box{
         width: 50rem;
-        margin-left: 12rem;
     }
     .card{
         width: 15rem;
