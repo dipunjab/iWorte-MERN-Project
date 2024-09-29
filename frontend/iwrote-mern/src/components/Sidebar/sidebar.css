@@ -17,11 +17,11 @@
     padding: 3px;
 }
 
-.nav-item li{
+.nav-item li {
     list-style: none;
     font-size: 15px;
     font-weight: 500;
-    color: black;
+    color: rgb(8, 8, 8);
     margin-top: 15px;
     cursor: pointer;
 }
@@ -30,7 +30,10 @@
     height: 20px;
     margin: 0px 3px;
 }
-
+.linkText{
+    text-decoration: none;
+    color: #000;
+}
 .upper-items{
     margin-top: 20px;
 }

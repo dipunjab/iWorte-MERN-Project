@@ -6,7 +6,7 @@ import taskpng from "../../assets/tasks.png"
 import stickynotepng from "../../assets/sticky.png"
 import settingpng from "../../assets/setting.png"
 import logoutpng from "../../assets/logout.png"
-
+import {Link} from "react-router-dom"
 
 function SideBar() {
     return (
@@ -19,10 +19,10 @@ function SideBar() {
                 <div className='upper-items'>
                     <nav className='nav-item'>
                         <ul className='nav-item-ul'>
-                            <li><img src={homepng} alt="homelogo" />DashBoard</li>
-                            <li><img src={notepng} alt="" />Notes</li>
-                            <li><img src={taskpng} alt="" />Tasks</li>
-                            <li><img src={stickynotepng} alt="" />StickyWall</li>
+                            <li><Link to="/" className='linkText'><img src={homepng} alt="homelogo" />DashBoard</Link></li>
+                            <li><Link to="/notes" className='linkText'><img src={notepng} alt="" />Notes</Link></li>
+                            <li><Link to="tasks" className='linkText'><img src={taskpng} alt="" />Tasks</Link></li>
+                            <li><Link to="/stickyWall" className='linkText'><img src={stickynotepng} alt="" />StickyWall</Link></li>
                         </ul>
                     </nav>
                 </div>
@@ -30,8 +30,8 @@ function SideBar() {
                     <nav className='nav-item'>
                         <ul className='nav-item-ul'>
                             <li>Mode</li>
-                            <li><img src={settingpng} alt="" />Settings</li>
-                            <li><img src={logoutpng} alt="" />Logout</li>
+                            <li><Link to="/settings" className='linkText'><img src={settingpng} alt="" />Settings</Link></li>
+                            <li><Link to="/logout" className='linkText'><img src={logoutpng} alt="" />Logout</Link></li>
                         </ul>
                     </nav>
                 </div>
@@ -42,12 +42,12 @@ function SideBar() {
                 <div className='items-mobile'>
                     <nav className='nav-item-mobile'>
                         <ul className='nav-item-ul-mobile'>
-                            <li><img src={homepng} alt="homelogo" /></li>
-                            <li><img src={notepng} alt="notelogo" /></li>
-                            <li><img src={taskpng} alt="tasklogo" /></li>
-                            <li><img src={stickynotepng} alt="stickynotelogo" /></li>
-                            <li><img src={settingpng} alt="settinglogo" /></li>
-                            <li><img src={logoutpng} alt="logoutlogo" /></li>
+                            <li><Link to="/" className='linkText'><img src={homepng} alt="homelogo" /></Link></li>
+                            <li><Link to="/notes" className='linkText'><img src={notepng} alt="notelogo" /></Link></li>
+                            <li><Link to="/tasks" className='linkText'><img src={taskpng} alt="tasklogo" /></Link></li>
+                            <li><Link to="/stickyWall" className='linkText'><img src={stickynotepng} alt="stickynotelogo" /></Link></li>
+                            <li><Link to="/settings" className='linkText'><img src={settingpng} alt="settinglogo" /></Link></li>
+                            <li><Link to="/logout" className='linkText'><img src={logoutpng} alt="logoutlogo" /></Link></li>
                         </ul>
                     </nav>
                 </div>
