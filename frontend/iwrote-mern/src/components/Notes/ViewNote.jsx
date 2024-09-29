@@ -1,22 +1,34 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom';
+import NoteContext from '../../ContextApi/NotesContext/NoteContext';
 
-function ViewNote(props) {
-    const { noteId } = useParams();
-    const note = props.notes.find(n => n.id === parseInt(noteId));
+function ViewNote() {
+  const context = useContext(NoteContext)
+  const {notes} = context
   
-    return (
-      <div className="container mt-5">
-        {note ? (
-          <>
-            <h1>{note.title}</h1>
-            <p>{note.content}</p>
-          </>
-        ) : (
-          <p>Note not found.</p>
-        )}
-      </div>
-    );
+  const { noteId } = useParams();
+  const note = notes.find(n => n.id === parseInt(noteId));
+
+  return (
+    <div className="container mt-5">
+      {note ? (
+        <>
+            <div className='viewNoteContainer'>
+              <div className='noteTitle'>
+                <h1><i style={{color: "gray"}}>Title:</i> {note.title}</h1>
+              </div>
+              <hr /> 
+              <div className='noteContent'>
+                  <i style={{color: "gray"}}><h3>Content:-</h3></i>  
+                  <p>{note.content}</p>
+              </div>
+            </div>
+        </>
+      ) : (
+        <p>Note not found.</p>
+      )}
+    </div>
+  );
 }
 
 export default ViewNote

@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./Dashboard.css"
 import Cards from '../Cards(rem)/Cards'
 
 
-function Dashboard(props) {
+function Dashboard() {
   return (
     <>
       <div className='dashboard-content'>
         <div className='dashboardHeading'>
           <h1>Dashboard</h1>
         </div>
-        <Cards title="Notes" notes={props.notes}/>
-        <Cards title="Tasks" notes={props.notes}/>
-        <Cards title="StickyWall" notes={props.notes}/>
+        <Cards title="Notes"/>
+        <Cards title="Tasks"/>
+        <Cards title="StickyWall"/>
       </div>
     </>
   )
