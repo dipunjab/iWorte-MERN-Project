@@ -6,19 +6,24 @@ import React from 'react'
 function NoteState(props) {
     const notesInitial = [
         {
-            id: 1, title: 'Note 1',
+            id: 1,
+            title: 'Note 1',
+            tag: "work",
             content: 'This is note 1'
           },
         {
             id: 2, title: 'Note 2',
+            tag: "work",
             content: 'This is note 2'
         },
         {
             id: 3, title: 'Note 3',
+            tag: "work",
             content: 'This is note 2'
         },
         {
             id: 4, title: 'Note 4',
+            tag: "work",
             content: 'This is note 2'
         }
     ]

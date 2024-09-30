@@ -16,6 +16,7 @@ function ViewNote() {
             <div className='viewNoteContainer'>
               <div className='noteTitle'>
                 <h1><i style={{color: "gray"}}>Title:</i> {note.title}</h1>
+                <p><strong>Tag:</strong> {note.tag}</p>
               </div>
               <hr /> 
               <div className='noteContent'>

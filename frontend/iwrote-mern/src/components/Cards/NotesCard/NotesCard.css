@@ -1,0 +1,54 @@
+.card{
+    width: 13rem;
+    height: 10rem;
+    margin: 0 3px;
+}
+.card-title{
+    font-size: 15px;
+    font-weight: 700;
+}
+.card-subtitle{
+    font-size: 10px;
+}
+
+.imgIcon{
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+
+
+@media (max-width: 500px) {
+    .card{
+        width: 10rem;
+        height: 7rem;
+    }
+    .card-title{
+        font-size: 10px;
+        font-weight: 700;
+    }
+    .card-subtitle{
+        font-size: 7px;
+    }
+    
+    .imgIcon{
+        width: 15px;
+        height: 15px;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+}
+
+.NotesCardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.custom-pointer:hover{
+    background-color: #faf6f1;
+    cursor: pointer;
+}
