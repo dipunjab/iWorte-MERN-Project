@@ -11,6 +11,7 @@ import {
 import RightBar from "./components/RightSidebar/Rightbar.jsx"
 import ViewNote from "./components/Notes/ViewNote.jsx"
 import AddNote from "./components/Notes/AddNote.jsx"
+import EditNotes from "./components/Notes/EditNotes.jsx"
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/notes" element={<Notes />} />
             <Route path="/viewnote/:noteId" element={<ViewNote />} />
             <Route path="/addnote" element={<AddNote />} />
+            <Route path="/editnote/:noteId" element={<EditNotes />} />
           </Routes>
         </div>
       </Router>

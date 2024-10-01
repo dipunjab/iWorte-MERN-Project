@@ -10,6 +10,7 @@ function AddNote() {
   const [note, setNote] = useState({title:"", content:""})
 
   const navigate = useNavigate()
+  
   const handleSave = (e)=>{
     e.preventDefault()
     addNotes(note.title, note.content)

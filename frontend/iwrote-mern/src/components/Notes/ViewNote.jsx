@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import NoteContext from '../../ContextApi/NotesContext/NoteContext';
 
@@ -7,7 +7,14 @@ function ViewNote() {
   const {notes} = context
   
   const { noteId } = useParams();
-  const note = notes.find(n => n.id === parseInt(noteId));
+
+  const [note, setNote] = useState(null);
+
+
+  useEffect(() => {
+    const foundNote = notes.find((note) => note._id === noteId);
+    setNote(foundNote);
+  }, [noteId, notes]);
 
   return (
     <div className="container mt-5">

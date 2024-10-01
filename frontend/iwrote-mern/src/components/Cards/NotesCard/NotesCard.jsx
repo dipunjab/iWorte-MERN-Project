@@ -2,37 +2,38 @@ import React, { useContext } from 'react'
 import "./NotesCard.css"
 import editpng from "../../../assets/edit.png"
 import deletepng from "../../../assets/delete.png"
-import NoteContext from "../../../ContextApi/NotesContext/NoteContext"
 import { useNavigate } from 'react-router-dom'
+import NoteContext from "../../../ContextApi/NotesContext/NoteContext"
 
-function NotesCard({notes: propNotes}) {
+function NotesCard({notes}) {
+
   const context = useContext(NoteContext)
-  const {notes} = context
-
-  const displayNotes = propNotes || notes
-
+  const {deleteNotes} = context
   const navigate = useNavigate()
+
+  const handleEditNote=(noteID)=>{
+    navigate(`/editnote/${noteID}`)
+  }
+
   const handleCardClick = (noteId) => {
    navigate(`/viewnote/${noteId}`);
   };
 
   return (
-    <div className='NotesCardContainer'>
-      {displayNotes && displayNotes.length > 0 ?
-      displayNotes.map((note)=>(
-      <div key={note.id} className="card">
+    <div>
+      <div key={notes._id} className="card">
         <div className="card-body">
           <div className='d-flex justify-content-between'>
-            <h5 className="card-title">{note.title}</h5>
+            <h5 className="card-title">{notes.title}</h5>
             <div>
-              <img src={editpng} alt="" className='imgIcon' />
-              <img src={deletepng} alt="" className='imgIcon' />
+              <img src={editpng} alt="" className='imgIcon' onClick={()=>(handleEditNote(notes._id))}/>
+              <img src={deletepng} alt="" className='imgIcon' onClick={()=>(deleteNotes(notes._id))}/>
             </div>
           </div>
-          <h6 className="card-subtitle mb-2 text-body-secondary">{note.tag}</h6>
-          <p onClick={() => handleCardClick(note.id)} className="card-text custom-pointer">{note.content}</p>
+          <h6 className="card-subtitle mb-2 text-body-secondary">{notes.tag}</h6>
+          <p onClick={() => handleCardClick(notes._id)} className="card-text custom-pointer">{notes.content}</p>
         </div>
-    </div> )): <p>No Notes Available</p>}
+    </div>
       </div>
   )
 }

@@ -1,15 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import "./Dashboard.css"
 import NoteContext from '../../ContextApi/NotesContext/NoteContext'
 import NotesCard from "../Cards/NotesCard/NotesCard"
 import TasksCard from "../Cards/TasksCard/TasksCard"
 import StickyNotes from "../Cards/StickyNotesCard/StickyNotes"
+import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
   const context = useContext(NoteContext)
-  const { notes } = context
+  const {notes, getAllNotes } = context
+  const navigate = useNavigate()
 
-  const sliceNotes = notes.slice(0,3)
+  useEffect(()=>{
+    getAllNotes()
+  },[])
+
+  const reverse = notes.slice().reverse()
+  const sliceNotes = reverse.slice(0,3)
+
+  const handleNoteViewMore = () => {
+    navigate("/notes")
+  }
 
   return (
     <>
@@ -19,17 +30,19 @@ function Dashboard() {
         </div>
           <div className="notesCardContainer">
             <div className='d-flex justify-content-between'>
-              <h1 className='whoseCard'>Notes</h1>
-              <button className={`viewbtn btn btn-primary d-${notes.length > 3?"block": "none"}`}>ViewMore</button>
+              <h1 className='whoseCard'>Notes <span>({notes.length})</span></h1>
+              <button className={`viewbtn btn btn-primary d-${notes.length >= 3?"block": "none"}`} onClick={handleNoteViewMore}>ViewMore</button>
             </div>
             <div className="noteCardsDisplay">
-              <NotesCard notes={sliceNotes}/>
+              {sliceNotes.length > 0 ? sliceNotes.map((note)=>(
+                <NotesCard  key={note._id} notes={note}/>
+              )): <p>No Notes available</p>}
             </div>
           </div>
           <div className="tasksCardContainer">
             <div className='d-flex justify-content-between'>
               <h1 className='whoseCard'>Tasks</h1>
-              <button className={`viewbtn btn btn-primary d-${notes.length > 3?"block": "none"}`}>ViewMore</button>
+              <button className={`viewbtn btn btn-primary d-${notes.length >= 3?"block": "none"}`}>ViewMore</button>
             </div>
             <div className="tasksCardsDisplay">
               <TasksCard/>
@@ -38,7 +51,7 @@ function Dashboard() {
           <div className="stickynotesCardContainer">
           <div className='d-flex justify-content-between'>
               <h1 className='whoseCard'>StickyWall</h1>
-              <button className={`viewbtn btn btn-primary d-${notes.length > 3?"block": "none"}`}>ViewMore</button>
+              <button className={`viewbtn btn btn-primary d-${notes.length >= 3?"block": "none"}`}>ViewMore</button>
             </div>
             <div className="stickynotesCardsDisplay">
                 <StickyNotes/>

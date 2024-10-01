@@ -41,12 +41,7 @@
     }
 }
 
-.NotesCardContainer{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 5px;
-}
+
 
 .custom-pointer:hover{
     background-color: #faf6f1;
