@@ -40,21 +40,11 @@ router.post("/addtask", verifyUser,
 
 //Router to update tasks
 router.put("/updatetask/:id", verifyUser,
-    [
-        // Validate title: should be at least 3 characters long (optional)
-        body('title', "Enter min 3 characters title").optional().isLength({ min: 3 }),
-        // Validate content: should be at least 5 characters long (optional)
-        body('content', "Enter a min 5 characters content.").optional().isLength({ min: 5 })
-    ],
     async(req,res)=>{
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() })
-        }
 
         try {
             const { id } = req.params
-            const { title, content, check} = req.body
+            const {check} = req.body
 
             const findTask = await Task.findById(id)
             if(!findTask) return res.status(400).json({message: "Failed to find Task"})
@@ -65,8 +55,6 @@ router.put("/updatetask/:id", verifyUser,
 
             const task = await Task.findByIdAndUpdate(id,{
                $set: {
-                title,
-                content,
                 check
                } 
             }, {new: true})

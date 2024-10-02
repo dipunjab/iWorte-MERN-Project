@@ -1,0 +1,39 @@
+.TaskCard {
+    margin-bottom: 5px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  .taskcardhead{
+    height: 50px;
+  }
+  .checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid gray;
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.2s ease;
+  }
+  
+  .checkbox:checked {
+    background-color: #2b9715;
+    border: 2px solid #2b9715;
+  }
+  
+  .deletepng {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .deletepng:hover {
+    transform: scale(1.1);
+  }
+  
+  .completed {
+    background-color: greenyellow;
+  }

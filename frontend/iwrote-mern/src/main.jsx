@@ -2,12 +2,11 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import NoteState from "./ContextApi/NotesContext/NoteState.jsx"
-
+import Provider from "./ContextApi/Provider"
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <NoteState>
-      <App />
-    </NoteState>
+    <Provider>
+      <App/>
+    </Provider>
   </StrictMode>,
 )

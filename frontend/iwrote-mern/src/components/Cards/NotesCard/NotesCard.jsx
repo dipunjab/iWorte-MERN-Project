@@ -31,7 +31,12 @@ function NotesCard({notes}) {
             </div>
           </div>
           <h6 className="card-subtitle mb-2 text-body-secondary">{notes.tag}</h6>
-          <p onClick={() => handleCardClick(notes._id)} className="card-text custom-pointer">{notes.content}</p>
+          <p onClick={() => handleCardClick(notes._id)} className="card-text custom-pointer">{notes.content.length>50? 
+          ( <>
+              {notes.content.slice(0,50)} 
+              <span style={{color: "red"}}> Read more...</span>
+            </>
+          ) : notes.content}</p>
         </div>
     </div>
       </div>
