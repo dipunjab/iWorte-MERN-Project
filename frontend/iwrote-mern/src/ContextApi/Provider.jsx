@@ -1,4 +1,5 @@
 import NoteState from "./NotesContext/NoteState.jsx"
+import StickyState from "./StickyNotesContext/StickyState.jsx"
 import TasksState from "./TasksContext/TasksState.jsx"
 
 
@@ -6,11 +7,13 @@ import React from 'react'
 
 function Provider({ children }) {
     return (
-        <TasksState>
-            <NoteState>
-                {children}
-            </NoteState>
-        </TasksState>
+        <StickyState>
+            <TasksState>
+                <NoteState>
+                    {children}
+                </NoteState>
+            </TasksState>
+        </StickyState>
     )
 }
 

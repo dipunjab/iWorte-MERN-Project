@@ -34,7 +34,7 @@
     .stickynotesCardContainer {
         height: auto;
     }
-    
+
     .noteCardsDisplay,
     .stickynotesCardsDisplay,
     .tasksCardsDisplay {
@@ -42,7 +42,6 @@
         height: auto; 
         margin: 3px 0;
         display: flex;
-        flex-direction: column; 
     }
 }
 
@@ -71,7 +70,9 @@
         display: flex;
         flex-wrap: wrap;
     }
-
+    .stickynotesCardsDisplay{
+        margin-bottom: 80px;
+    }
     .whoseCard {
         margin-left: 20px;
     }

@@ -1,0 +1,31 @@
+.stickyNoteCard{
+    width: 13rem;
+    height: 8rem;
+    margin: 5px;
+}
+.deletePNG {
+    border: 2px solid white;
+    width: 30px;
+    padding: 0px;
+    text-align: center;
+    border-radius: 50px;
+    background-color: white;
+    margin: 2px;
+}
+.deletePNG:hover{
+    background-color: darkgray;
+    cursor: pointer;
+}
+.deletePNG img{
+    width: 20px;
+    height: 20px;
+}
+.stickyContent{
+    height: 7.2rem;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    margin: 2px;
+    padding: 2px;
+}

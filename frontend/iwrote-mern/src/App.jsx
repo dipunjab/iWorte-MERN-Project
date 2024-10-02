@@ -14,6 +14,7 @@ import AddNote from "./components/Notes/AddNote.jsx"
 import EditNotes from "./components/Notes/EditNotes.jsx"
 import Tasks from "./components/Tasks/Tasks.jsx"
 import ViewTask from "./components/Tasks/ViewTask.jsx"
+import StickyWall from "./components/StickyWall/StickyWall.jsx"
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/editnote/:noteId" element={<EditNotes />} />
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/viewtask/:taskId" element={<ViewTask />} />
+            <Route path="/stickywall" element={<StickyWall />} />
           </Routes>
         </div>
       </Router>

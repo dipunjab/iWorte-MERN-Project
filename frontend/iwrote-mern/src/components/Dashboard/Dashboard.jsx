@@ -6,6 +6,7 @@ import NotesCard from "../Cards/NotesCard/NotesCard"
 import TasksCard from "../Cards/TasksCard/TasksCard"
 import StickyNotes from "../Cards/StickyNotesCard/StickyNotes"
 import { useNavigate } from 'react-router-dom'
+import StickyContext from '../../ContextApi/StickyNotesContext/StickyContext'
 
 function Dashboard() {
   const noteContext = useContext(NoteContext)
@@ -13,6 +14,9 @@ function Dashboard() {
 
   const taskContext = useContext(TasksContext)
   const {tasks, getAllTasks} = taskContext
+  
+  const stickyContext = useContext(StickyContext)
+  const {stickyNotes, getAllStickyNotes} = stickyContext
 
   const navigate = useNavigate()
 
@@ -22,18 +26,27 @@ function Dashboard() {
   useEffect(()=>{
     getAllTasks()
 },[])
+  useEffect(()=>{
+    getAllStickyNotes()
+},[])
 
   const noteReverse = notes.slice().reverse()
   const sliceNotes = noteReverse.slice(0,3)
   
   const taskReverse = tasks.slice().reverse()
   const sliceTaskss = taskReverse.slice(0,3)
+  
+  const stickyReverse = stickyNotes.slice().reverse()
+  const sliceSticky = stickyReverse.slice(0,3)
 
   const handleNoteViewMore = () => {
     navigate("/notes")
   }
   const handleTasksViewMore = () => {
     navigate("/tasks")
+  }
+  const handleStickyWallViewMore = () => {
+    navigate("/stickyWall")
   }
 
   return (
@@ -56,7 +69,7 @@ function Dashboard() {
           <div className="tasksCardContainer">
             <div className='d-flex justify-content-between'>
               <h1 className='whoseCard'>Tasks <span>({tasks.length})</span></h1>
-              <button className={`viewbtn btn btn-primary d-${tasks.length >= 3?"block": "none"}`}>ViewMore</button>
+              <button className={`viewbtn btn btn-primary d-${tasks.length >= 3?"block": "none"}`} onClick={handleTasksViewMore}>ViewMore</button>
             </div>
             <div className="tasksCardsDisplay">
               { sliceTaskss.length > 0 ? sliceTaskss.map((task)=>(
@@ -67,10 +80,12 @@ function Dashboard() {
           <div className="stickynotesCardContainer">
           <div className='d-flex justify-content-between'>
               <h1 className='whoseCard'>StickyWall</h1>
-              <button className={`viewbtn btn btn-primary d-${notes.length >= 3?"block": "none"}`}>ViewMore</button>
+              <button className={`viewbtn btn btn-primary d-${stickyNotes.length >= 3?"block": "none"}`} onClick={handleStickyWallViewMore}>ViewMore</button>
             </div>
             <div className="stickynotesCardsDisplay">
-                <StickyNotes/>
+                { sliceSticky.length > 0 ? sliceSticky.map((notes)=>(
+                  <StickyNotes key={notes._id} notes={notes}/>
+                )): <p>No Sticky Notes available</p>}
             </div>
           </div>
       </div>
