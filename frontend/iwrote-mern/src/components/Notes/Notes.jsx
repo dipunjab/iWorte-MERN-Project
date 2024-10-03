@@ -16,7 +16,12 @@ function Notes() {
   const { notes, getAllNotes } = context
 
   useEffect(() => {
-    getAllNotes()
+    if(localStorage.getItem("auth")){
+      getAllNotes()
+      }else{
+      navigate("/login")
+    }
+   
   }, [])
 
 

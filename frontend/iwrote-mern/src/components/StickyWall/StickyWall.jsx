@@ -13,7 +13,11 @@ function StickyWall() {
     const [note, setNote] = useState({content: '', color: ''})
 
       useEffect(() => {
-        getAllStickyNotes()
+        if(localStorage.getItem("auth")){
+            getAllStickyNotes()
+        }else{
+            navigate("/login")
+        }
       }, [])
     const modalRef = useRef(null);
 

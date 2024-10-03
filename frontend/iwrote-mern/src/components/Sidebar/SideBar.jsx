@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./sidebar.css"
 import homepng from "../../assets/home.png"
 import notepng from "../../assets/note.png"
@@ -6,9 +6,18 @@ import taskpng from "../../assets/tasks.png"
 import stickynotepng from "../../assets/sticky.png"
 import settingpng from "../../assets/setting.png"
 import logoutpng from "../../assets/logout.png"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
+import AuthContext from '../../ContextApi/AuthContext/AuthContext'
 
 function SideBar() {
+    const context = useContext(AuthContext)
+    const {logout} = context
+    const navigate = useNavigate()
+
+    const handleLogout = ()=>{
+        logout()
+        navigate("/login")    
+    }
     return (
         <>
             {/* Design for web */}
@@ -31,7 +40,7 @@ function SideBar() {
                         <ul className='nav-item-ul'>
                             <li>Mode</li>
                             <li><Link to="/settings" className='linkText'><img src={settingpng} alt="" />Settings</Link></li>
-                            <li><Link to="/logout" className='linkText'><img src={logoutpng} alt="" />Logout</Link></li>
+                            <li><Link to='#' className='linkText'  onClick={handleLogout}><img src={logoutpng} alt=""/>Logout</Link></li>
                         </ul>
                     </nav>
                 </div>
@@ -47,7 +56,7 @@ function SideBar() {
                             <li><Link to="/tasks" className='linkText'><img src={taskpng} alt="tasklogo" /></Link></li>
                             <li><Link to="/stickyWall" className='linkText'><img src={stickynotepng} alt="stickynotelogo" /></Link></li>
                             <li><Link to="/settings" className='linkText'><img src={settingpng} alt="settinglogo" /></Link></li>
-                            <li><Link to="/logout" className='linkText'><img src={logoutpng} alt="logoutlogo" /></Link></li>
+                            <li><Link to='#' className='linkText' onClick={handleLogout}><img src={logoutpng} alt="logoutlogo" /></Link></li>
                         </ul>
                     </nav>
                 </div>

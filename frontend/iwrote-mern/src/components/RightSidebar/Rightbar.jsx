@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./Wel.css"
 import quotepng from "../../assets/bnQoute.jpg"
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar'
+import AuthContext from '../../ContextApi/AuthContext/AuthContext';
 
 function RightBar() {
     const [time, setTime] = useState(new Date());
     const [value, onChange] = useState(new Date());
 
+    const context = useContext(AuthContext)
+    const {username} = context
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -23,7 +26,7 @@ function RightBar() {
             </div>
             <div className="welcomeContainer">
                 <div className='WelcomeHeader'>
-                    <h2>Welcome User!</h2>
+                    <h2>Welcome {username}!</h2>
                 </div>
                 <div className="inspPicture">
                     <img src={quotepng} alt="" />

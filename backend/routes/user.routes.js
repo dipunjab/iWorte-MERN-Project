@@ -104,5 +104,14 @@ router.delete('/deleteuser', verifyUser, async (req, res) => {
     }
 });
    
+router.get("/getuser", verifyUser,async(req,res) => {
+    try {
+        let userId  = req.user.id
+        const user = await User.findById(userId).select("-password")    
+        res.status(200).json(user)
+    } catch (error) {
+        console.log(error)
+    }
+})
     
 export default router

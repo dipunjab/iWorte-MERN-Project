@@ -1,0 +1,55 @@
+import React, { useContext, useState } from 'react'
+import VisualsContainer from './visualsContainer'
+import "./styles.css"
+import {useNavigate} from "react-router-dom"
+import AuthContext from '../../ContextApi/AuthContext/AuthContext'
+
+function Login() {
+  const navigate = useNavigate()
+  const context = useContext(AuthContext)
+  const {login} = context
+
+  const handleSignup = ()=>{
+    navigate("/signup")
+  }
+
+  const [cred, setCred] = useState({email: "", password: ""})
+
+  const {email, password} = cred
+
+  const handleLoginSubmit = async(e)=>{
+    e.preventDefault()
+    await login(email, password)
+    alert("User logged in successfully")
+    navigate("/")
+  };
+
+  const onchange = (e)=>{
+    setCred({...cred, [e.target.name]: e.target.value})
+  }
+
+  return (
+    <>
+    <div className="signupbtn">
+      <button type='button' onClick={handleSignup}>SignUp</button>
+    </div>
+    <div className='loginContainer'>
+      <VisualsContainer/>
+        <form className="loginForm" onSubmit={handleLoginSubmit}>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Email address</label>
+            <input type="email" name="email" onChange={onchange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+              <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">Password</label>
+            <input type="password" name="password" onChange={onchange} className="form-control" id="exampleInputPassword1"/>
+          </div>
+          <button type="submit" className="btn btn-dark">Login</button>
+        </form>
+    </div>
+    </>
+  )
+}
+
+export default Login

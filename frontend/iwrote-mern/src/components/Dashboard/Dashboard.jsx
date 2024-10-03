@@ -21,13 +21,25 @@ function Dashboard() {
   const navigate = useNavigate()
 
   useEffect(()=>{
-    getAllNotes()
+    if(localStorage.getItem("auth")){
+      getAllNotes()
+    }else{
+      navigate("login")
+    }
   },[])
   useEffect(()=>{
-    getAllTasks()
+    if(localStorage.getItem("auth")){
+      getAllTasks()   
+     }else{
+      navigate("login")
+     }
 },[])
   useEffect(()=>{
-    getAllStickyNotes()
+    if(localStorage.getItem("auth")){
+      getAllStickyNotes()
+    }else{
+      navigate("login")
+    }
 },[])
 
   const noteReverse = notes.slice().reverse()
@@ -40,13 +52,26 @@ function Dashboard() {
   const sliceSticky = stickyReverse.slice(0,3)
 
   const handleNoteViewMore = () => {
-    navigate("/notes")
+    if(localStorage.getItem("auth")){
+      navigate("/notes")
+    }else{
+      navigate("login")
+    }
   }
   const handleTasksViewMore = () => {
-    navigate("/tasks")
+    if(localStorage.getItem("auth")){
+      navigate("/tasks")
+    }else{
+      navigate("login")
+    }
   }
   const handleStickyWallViewMore = () => {
-    navigate("/stickyWall")
+    if(localStorage.getItem("auth")){
+      navigate("/stickyWall")
+        }else{
+      navigate("login")
+    }
+    
   }
 
   return (

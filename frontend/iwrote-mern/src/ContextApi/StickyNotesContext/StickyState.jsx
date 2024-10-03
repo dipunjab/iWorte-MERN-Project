@@ -13,8 +13,8 @@ function StickyState(props) {
       method: "GET",
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZmN2Y0MzlmM2I2OTgwODRlMjZiZjg2In0sImlhdCI6MTcyNzg3NzQzOH0.hr3aylcD54sHjxek8Ea35Ywj_2fkDeZjdql_llAlPpM'
-      }
+        'auth-token': localStorage.getItem('auth')
+            }
     })
     const json = await response.json()
     const notesData = json.data
@@ -28,8 +28,8 @@ function StickyState(props) {
       method: "POST",
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZmN2Y0MzlmM2I2OTgwODRlMjZiZjg2In0sImlhdCI6MTcyNzg3NzQzOH0.hr3aylcD54sHjxek8Ea35Ywj_2fkDeZjdql_llAlPpM'
-      },
+        'auth-token': localStorage.getItem('auth')
+            },
       body: JSON.stringify({ content, color })
     })
     const note = await response.json()
@@ -42,8 +42,8 @@ function StickyState(props) {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjZmN2Y0MzlmM2I2OTgwODRlMjZiZjg2In0sImlhdCI6MTcyNzg3NzQzOH0.hr3aylcD54sHjxek8Ea35Ywj_2fkDeZjdql_llAlPpM'
-      }
+        'auth-token': localStorage.getItem('auth')
+           }
     })
     await response.json()
     const upnote = stickyNotes.filter(note=> note._id !== id)
