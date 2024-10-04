@@ -19,6 +19,7 @@ import StickyWall from "./components/StickyWall/StickyWall.jsx";
 import Login from "./components/LoginSignup/Login.jsx";
 import Signup from "./components/LoginSignup/Signup.jsx";
 import { useEffect } from "react";
+import Settings from "./components/Settings/Settings.jsx";
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
           <Route path="/tasks" element={isAuthenticated ? <Tasks /> : <Login/>} />
           <Route path="/viewtask/:taskId" element={isAuthenticated ? <ViewTask /> : <Login/>} />
           <Route path="/stickywall" element={isAuthenticated ? <StickyWall /> : <Login/>} />
+          <Route path="/settings" element={isAuthenticated ? <Settings /> : <Login/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>

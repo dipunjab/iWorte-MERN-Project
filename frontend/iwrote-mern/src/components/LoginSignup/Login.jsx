@@ -14,14 +14,21 @@ function Login() {
   }
 
   const [cred, setCred] = useState({email: "", password: ""})
+  const [error, setError] = useState('')
 
   const {email, password} = cred
 
   const handleLoginSubmit = async(e)=>{
     e.preventDefault()
-    await login(email, password)
-    alert("User logged in successfully")
-    navigate("/")
+    setError('')
+
+    try {
+      await login(email, password)
+      alert("User logged in successfully")
+      navigate("/")
+    } catch (err) {
+      setError(err.message)
+    }
   };
 
   const onchange = (e)=>{
@@ -38,13 +45,14 @@ function Login() {
         <form className="loginForm" onSubmit={handleLoginSubmit}>
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Email address</label>
-            <input type="email" name="email" onChange={onchange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+            <input type="email" required name="email" onChange={onchange} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
               <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
           </div>
           <div className="mb-3">
             <label htmlFor="password" className="form-label">Password</label>
-            <input type="password" name="password" onChange={onchange} className="form-control" id="exampleInputPassword1"/>
+            <input type="password" required name="password" onChange={onchange} className="form-control" id="exampleInputPassword1"/>
           </div>
+          {error && <div className="error-message" style={{ color: 'red' }}>{error}</div>}
           <button type="submit" className="btn btn-dark">Login</button>
         </form>
     </div>

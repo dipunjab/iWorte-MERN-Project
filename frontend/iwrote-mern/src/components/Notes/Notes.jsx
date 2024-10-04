@@ -16,12 +16,12 @@ function Notes() {
   const { notes, getAllNotes } = context
 
   useEffect(() => {
-    if(localStorage.getItem("auth")){
+    if (localStorage.getItem("auth")) {
       getAllNotes()
-      }else{
+    } else {
       navigate("/login")
     }
-   
+
   }, [])
 
 
@@ -34,11 +34,13 @@ function Notes() {
         <div>
           <button onClick={() => (handleAddnote())} className='addNotebtn'><img src={addnotepng} alt="addnote" /><span>Add Note</span></button>
         </div>
-        <div className='NotesContainer'>
-          {notes.length > 0 ? 
-          notes.slice().reverse().map((note) => (
-            <NotesCard key={note._id} notes={note} />
-          )) : <p>No Notes available</p>}
+        <div className="container">
+          <div className='row gy-2 my-3'>
+            {notes.length > 0 ?
+              notes.slice().reverse().map((note) => (
+                <NotesCard key={note._id} notes={note} />
+              )) : <p>No Notes available</p>}
+          </div>
         </div>
       </div>
     </>

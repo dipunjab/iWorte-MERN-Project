@@ -1,7 +1,4 @@
 .TaskCard {
-    margin-bottom: 5px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
   .taskcardhead{
@@ -37,3 +34,9 @@
   .completed {
     background-color: greenyellow;
   }
+
+  @media (max-width: 500px){
+    .cardTaskSmallWidth{
+        width: 10rem;
+    }
+}

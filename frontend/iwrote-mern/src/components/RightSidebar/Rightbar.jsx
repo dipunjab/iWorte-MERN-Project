@@ -10,7 +10,7 @@ function RightBar() {
     const [value, onChange] = useState(new Date());
 
     const context = useContext(AuthContext)
-    const {username} = context
+    const { username } = context
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -21,21 +21,23 @@ function RightBar() {
     }, []);
     return (
         <>
-            <div className='calenderContainer'>
-                <Calendar className="calender" onChange={onChange} value={value} />
-            </div>
-            <div className="welcomeContainer">
-                <div className='WelcomeHeader'>
-                    <h2>Welcome {username}!</h2>
+            <div className='container rightBar'>
+                <div className='calenderContainer'>
+                    <Calendar className="calender" onChange={onChange} value={value} />
                 </div>
-                <div className="inspPicture">
-                    <img src={quotepng} alt="" />
-                </div>
-                <div className="qoute">
-                    <h3>Do your best!</h3>
-                </div>
-                <div className='showTime'>
-                    <p>Current Time: {time.toLocaleTimeString()}</p>
+                <div className="welcomeContainer">
+                    <div className='WelcomeHeader'>
+                        <h2>Welcome {username}!</h2>
+                    </div>
+                    <div className="inspPicture">
+                        <img src={quotepng} alt="" />
+                    </div>
+                    <div className="qoute">
+                        <h3>Do your best!</h3>
+                    </div>
+                    <div className='showTime'>
+                        <p>Current Time: {time.toLocaleTimeString()}</p>
+                    </div>
                 </div>
             </div>
         </>

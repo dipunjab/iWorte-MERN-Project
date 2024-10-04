@@ -11,9 +11,8 @@ function StickyNotes({notes}) {
   const {deleteStickyNote} = context
 
   return (
-    <div>
-      <div className='stickyWallContainer'>
-        <div className='stickyNoteCard' style={{ background: `${bgColor}`, border: `2px solid ${bgColor}` }}>
+    <div className='stickycardSmallWidth col-sm-6 col-md-4 col-lg-3 mb-5'>
+        <div className='card' style={{ background: `${bgColor}`, border: `2px solid ${bgColor}` }}>
           <div className="deletePNG">
             <img src={deletePng} alt="" onClick={()=>(deleteStickyNote(notes._id))}/>
           </div>
@@ -22,7 +21,6 @@ function StickyNotes({notes}) {
           </div>
         </div>
       </div>
-    </div>
   )
 }
 

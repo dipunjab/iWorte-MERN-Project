@@ -24,7 +24,6 @@ const verifyUser = (req, res, next) => {
         // If there's an error in token verification (like invalid/expired token), log the error message
         // It's recommended to send a response indicating token verification failure
         console.log(error.message);
-
         // Optionally, you can return a 401 Unauthorized response to the client indicating invalid token
         return res.status(401).json({ message: "Invalid Token" });
     }

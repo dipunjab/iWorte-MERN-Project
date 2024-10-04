@@ -10,25 +10,30 @@ import { useNavigate } from 'react-router-dom'
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    const url ='http://localhost:8000/api/auth/createuser'
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, email, password })
-    });
+    try {
+      const url ='http://localhost:8000/api/auth/createuser'
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, password })
+      });
+  
+      const json = await response.json()
+      console.log(json);
+          
+      if(!response.ok){
+        alert(json.message)
+      }else{
+        navigate("/login");
+        alert("Account Created Successfully")
+      }
+    
+      } catch (error) {
+        console.log(error)
+    }
 
-    const json = await response.json()
-    console.log(json);
-        
-    if(json.Success){
-      navigate("/login");
-      alert("Account Created Successfully")
-    }
-    else {
-      alert("Invalid Credential")
-    }
   };
 
   const onchange = (e) => {
@@ -41,8 +46,7 @@ import { useNavigate } from 'react-router-dom'
       <div className="signupbtn">
         <button type='button' onClick={() => navigate("/login")}>Login</button>
       </div>
-      <div className='loginContainer'>
-          <VisualsContainer />
+      <div className='signupContainer'>
         <div className='registertext'>
           <p>Register Yourself</p>
           </div>
@@ -50,15 +54,18 @@ import { useNavigate } from 'react-router-dom'
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="name" className="form-label">Full Name</label>
-              <input type="text" onChange={onchange} className="form-control" name='name' id="name" aria-describedby="name" />
+              <input required maxLength={15} type="text" onChange={onchange} className="form-control" name='name' id="name" aria-describedby="name" />
+              <span id="passwordHelpInline" className="form-text">
+                Be 1-15 characters long.
+              </span>
             </div>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">Email address</label>
-              <input type="email" onChange={onchange} className="form-control" name='email' id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <input required type="email" onChange={onchange} className="form-control" name='email' id="exampleInputEmail1" aria-describedby="emailHelp" />
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">Password</label>
-              <input minLength={8} type="text" onChange={onchange} name='password' className="form-control" id="exampleInputPassword1" />
+              <input required minLength={8} type="text" onChange={onchange} name='password' className="form-control" id="exampleInputPassword1" />
               <span id="passwordHelpInline" className="form-text">
                 Must be 8-20 characters long.
               </span>

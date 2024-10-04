@@ -18,8 +18,8 @@ function TasksCard({ tasks }) {
   }
 
   return (
-    <div className="col-md-3 col-sm-4 mb-2">
-      <div className={`card TaskCard ${tasks.check ? 'completed' : ''} h-100`}>
+    <div className='cardTaskSmallWidth col-sm-6 col-md-4 col-lg-3'>
+      <div className={`card ${tasks.check ? 'completed' : ''} h-100`}>
         <div className="p-2 d-flex justify-content-between align-items-center  taskcardhead">
           <div>
             <h2 className="fs-5">{tasks.title}</h2>
@@ -33,7 +33,7 @@ function TasksCard({ tasks }) {
         <div className="card-body" style={{ cursor: "pointer" }}>
           <p onClick={() => handleCardClick(tasks._id)}>{tasks.content.length > 50 ? (
             <>
-              {tasks.content.slice(0, 55)}
+              {tasks.content.slice(0, 50)}
               <span style={{ color: "blue" }}>Read more...</span>
             </>
           )

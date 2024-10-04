@@ -8,7 +8,7 @@ function Tasks() {
     const context = useContext(TasksContext);
     const { tasks, addTasks, getAllTasks } = context;
     const [task, setTask] = useState({ title: '', content: '' });
-    const [isModalOpen, setModalOpen] = useState(false); 
+    const [isModalOpen, setModalOpen] = useState(false);
     const navigate = useNavigate();
     const modalRef = useRef(null);
 
@@ -26,9 +26,9 @@ function Tasks() {
         try {
             await addTasks(task.title, task.content);
             alert("Task Added");
-            setTask({ title: '', content: '' }); 
-            await getAllTasks(); 
-            setModalOpen(false); 
+            setTask({ title: '', content: '' });
+            await getAllTasks();
+            setModalOpen(false);
         } catch (error) {
             console.error("Failed to add task:", error);
             alert("Error adding task. Please try again.");
@@ -51,7 +51,7 @@ function Tasks() {
                                 className="modal-title rounded"
                                 name='title'
                                 onChange={onChange}
-                                value={task.title} 
+                                value={task.title}
                             />
                             <button type="button" className="btn-close" onClick={() => setModalOpen(false)} aria-label="Close"></button>
                         </div>
@@ -73,7 +73,7 @@ function Tasks() {
                     </div>
                 </div>
             </div>
-            
+
             <div>
                 <div className='dashboardHeading'>
                     <h1>Tasks</h1>
@@ -82,16 +82,18 @@ function Tasks() {
                     <button
                         type="button"
                         className="addNotebtn btn btn-primary"
-                        onClick={() => setModalOpen(true)} 
+                        onClick={() => setModalOpen(true)}
                     >
                         <img src={addnotepng} alt="addnote" />
                         <i style={{ color: "black" }}>Add Task</i>
                     </button>
                 </div>
-                <div className='NotesContainer m-2'>
-                    {tasks.length > 0 ? tasks.slice().reverse().map((task) => (
-                        <TasksCard key={task._id} tasks={task} />
-                    )) : <p>No Tasks available</p>}
+                <div className="container">
+                    <div className='row gy-2 my-3'>
+                        {tasks.length > 0 ? tasks.slice().reverse().map((task) => (
+                            <TasksCard key={task._id} tasks={task} />
+                        )) : <p>No Tasks available</p>}
+                    </div>
                 </div>
             </div>
         </div>

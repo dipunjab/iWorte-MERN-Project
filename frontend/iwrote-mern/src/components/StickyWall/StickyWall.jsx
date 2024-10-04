@@ -6,19 +6,19 @@ import "./sticky.css"
 
 function StickyWall() {
 
-    
+
     const context = useContext(StickyContext)
     const { stickyNotes, getAllStickyNotes, addStickyNote } = context
 
-    const [note, setNote] = useState({content: '', color: ''})
+    const [note, setNote] = useState({ content: '', color: '' })
 
-      useEffect(() => {
-        if(localStorage.getItem("auth")){
+    useEffect(() => {
+        if (localStorage.getItem("auth")) {
             getAllStickyNotes()
-        }else{
+        } else {
             navigate("/login")
         }
-      }, [])
+    }, [])
     const modalRef = useRef(null);
 
     const handleSave = async (e) => {
@@ -26,7 +26,7 @@ function StickyWall() {
         await addStickyNote(note.content, note.color)
         alert("StickyNote Added")
         setNote({ content: '', color: '' })
-        await getAllStickyNotes();  
+        await getAllStickyNotes();
 
         // Using Bootstrap's modal method to hide it
         const modalElement = modalRef.current;
@@ -40,7 +40,7 @@ function StickyWall() {
 
 
     const onChange = (e) => {
-        setNote({...note, [e.target.name]: e.target.value})
+        setNote({ ...note, [e.target.name]: e.target.value })
     }
 
 
@@ -52,13 +52,13 @@ function StickyWall() {
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <label htmlFor="color" className='m-2'><strong>Color:</strong></label>  
+                                    <label htmlFor="color" className='m-2'><strong>Color:</strong></label>
                                     <select value="blue" onChange={onChange} name="color" >
-                                        <option value="red"  style={{color: "red"}}>Red</option>
-                                        <option value="orange" style={{color: "orange"}}>orange</option>
-                                        <option value="blue" style={{color: "blue"}}>blue</option>
-                                        <option value="green" style={{color: "green"}}>green</option>
-                                        <option value="black" style={{color: "black"}}>black</option>
+                                        <option value="red" style={{ color: "red" }}>Red</option>
+                                        <option value="orange" style={{ color: "orange" }}>orange</option>
+                                        <option value="blue" style={{ color: "blue" }}>blue</option>
+                                        <option value="green" style={{ color: "green" }}>green</option>
+                                        <option value="black" style={{ color: "black" }}>black</option>
                                     </select>
                                 </div>
                                 <div className="modal-body d-flex ">
@@ -81,13 +81,15 @@ function StickyWall() {
                         type='button'
                         className="addNotebtn btn btn-primary"
                         data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"><img src={addnotepng} alt="addnote" /><span style={{color: "black"}}>Add StickyNote</span></button>
+                        data-bs-target="#exampleModal"><img src={addnotepng} alt="addnote" /><span style={{ color: "black" }}>Add StickyNote</span></button>
                 </div>
-                <div className='StickyContainer'>
-                    {stickyNotes.length > 0 ?
-                        stickyNotes.slice().reverse().map((notes) => (
-                            <StickyNotes key={notes._id} notes={notes} />
-                        )) : <p>No Notes available</p>}
+                <div className="container">
+                    <div className='row gy-2 my-3'>
+                        {stickyNotes.length > 0 ?
+                            stickyNotes.slice().reverse().map((notes) => (
+                                <StickyNotes key={notes._id} notes={notes} />
+                            )) : <p>No Notes available</p>}
+                    </div>
                 </div>
             </div>
         </>

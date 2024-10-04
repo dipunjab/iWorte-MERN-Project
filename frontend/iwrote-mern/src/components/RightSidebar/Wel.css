@@ -2,37 +2,33 @@
     position: fixed;
     right: 0;
     bottom: 0;
-    width: 20rem;
-    padding: 15px;
+    width: 16rem;
     text-align: center;
     margin: 10px 20px;
 }
 
 .inspPicture img{
-    width: 300px;
-    height: 200px;
+    width: 15rem;
+    height: 25vh;
 }
 
 
-@media (max-width: 800px){
-    .welcomeContainer{
+@media (max-width: 1265px){
+    .rightBar{
         display: none;
-    }
-    .calender{
-        display: none;        
     }
 }
 .calenderContainer{
     position: fixed;
-    top: 0;
+    top: 5%;
     right: 0;
-    margin: 6px;
+    margin: 10px;
     width: 20rem;
-    margin-right: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 40px;
 }
 .calender{
-    transform: scale(0.7);
+    transform: scale(0.6);
 }

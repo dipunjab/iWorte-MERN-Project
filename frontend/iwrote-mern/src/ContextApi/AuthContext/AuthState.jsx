@@ -17,17 +17,22 @@ function AuthState({children}) {
 
   const login = async(email,password) => {
     const url = 'http://localhost:8000/api/auth/login'
-    const response = await fetch(url,{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({email, password})
-    });
-    const json = await response.json()
-
-    localStorage.setItem("auth", json.authToken)
-    await getUser()
+    try {
+      const response = await fetch(url,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({email, password})
+      });
+      const json = await response.json()
+      if (!response.ok) {
+        throw new Error(json.message || 'Invalid credentials');
+      }    localStorage.setItem("auth", json.authToken)
+      await getUser()
+    } catch (error) {
+      throw error;
+    }
   };
 
   const logout = () => {
@@ -49,8 +54,22 @@ function AuthState({children}) {
        
   }   
 
+  const deleteUser = async()=>{
+    const url = 'http://localhost:8000/api/auth/deleteuser'
+    const response = await fetch(url,{
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "auth-Token": localStorage.getItem("auth")
+      }
+    });
+    await response.json()
+    localStorage.removeItem("auth")
+    navigate('/login')
+  }
+
   return (
-    <AuthContext.Provider value={{login, logout, username}}>
+    <AuthContext.Provider value={{login, logout, username, deleteUser}}>
       {children}
     </AuthContext.Provider>
   )

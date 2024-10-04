@@ -27,7 +27,7 @@ router.post("/createuser",
         }
 
         try {
-            const {name, country, email, password} = req.body
+            const {name, email, password} = req.body
 
             const findUser = await User.findOne({email: email})
             if (findUser) {
@@ -36,7 +36,6 @@ router.post("/createuser",
 
             const createUser = await User.create({
                 name: name,
-                country: country,
                 email: email,
                 password: password
             });
@@ -113,5 +112,5 @@ router.get("/getuser", verifyUser,async(req,res) => {
         console.log(error)
     }
 })
-    
+  
 export default router

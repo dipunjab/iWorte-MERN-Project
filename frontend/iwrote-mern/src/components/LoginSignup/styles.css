@@ -123,7 +123,7 @@
     color: black;
 }
 
-@media (max-width: 500px){
+@media (max-width: 786px){
     .signupbtn {
         margin: 10px;
     }
@@ -136,4 +136,17 @@
         color: white;
         border-radius: 30px;
     }
+    .signupContainer{
+        align-items: center;
+        margin: 20vw 20vw;
+        font-size: 10px;
+    }
+    .signupContainer input{
+        width: 15rem;
+    }
+}
+.registertext {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
 }
