@@ -23,24 +23,13 @@ function Dashboard() {
   useEffect(()=>{
     if(localStorage.getItem("auth")){
       getAllNotes()
-    }else{
-      navigate("login")
-    }
-  },[])
-  useEffect(()=>{
-    if(localStorage.getItem("auth")){
       getAllTasks()   
-     }else{
-      navigate("login")
-     }
-},[])
-  useEffect(()=>{
-    if(localStorage.getItem("auth")){
       getAllStickyNotes()
     }else{
       navigate("login")
     }
-},[])
+  },[])
+
 
   const noteReverse = notes.slice().reverse()
   const sliceNotes = noteReverse.slice(0,3)

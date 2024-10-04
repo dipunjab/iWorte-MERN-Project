@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import AuthContext from './AuthContext'
+import { useNavigate } from 'react-router-dom';
 
 function AuthState({children}) {
-    const [isAuth, setIsAuth] = useState(false);
     const [username, setUsername] = useState("User")
+    const navigate = useNavigate()
 
   useEffect(() => {
-    const authStatus = localStorage.getItem("auth");
-    if (authStatus) {
-      setIsAuth(true);
-      getUser()
+    const token = localStorage.getItem("auth");
+    if (token) {
+      getUser();
+    } else {
+      navigate("/login")
     }
   }, []);
 
@@ -25,13 +27,12 @@ function AuthState({children}) {
     const json = await response.json()
 
     localStorage.setItem("auth", json.authToken)
-    setIsAuth(true)
     await getUser()
   };
 
   const logout = () => {
     localStorage.removeItem("auth");
-    setIsAuth(false);
+    navigate("/login");
   };
 
   const getUser = async() => {
@@ -49,7 +50,7 @@ function AuthState({children}) {
   }   
 
   return (
-    <AuthContext.Provider value={{login, logout, isAuth, username}}>
+    <AuthContext.Provider value={{login, logout, username}}>
       {children}
     </AuthContext.Provider>
   )

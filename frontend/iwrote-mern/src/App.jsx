@@ -4,11 +4,11 @@ import SideBar from "./components/Sidebar/SideBar";
 import Notes from './components/Notes/Notes.jsx';
 
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  useNavigate,
 } from "react-router-dom";
+
 import RightBar from "./components/RightSidebar/Rightbar.jsx";
 import ViewNote from "./components/Notes/ViewNote.jsx";
 import AddNote from "./components/Notes/AddNote.jsx";
@@ -18,16 +18,23 @@ import ViewTask from "./components/Tasks/ViewTask.jsx";
 import StickyWall from "./components/StickyWall/StickyWall.jsx";
 import Login from "./components/LoginSignup/Login.jsx";
 import Signup from "./components/LoginSignup/Signup.jsx";
-import { useContext } from "react";
-import AuthContext from "./ContextApi/AuthContext/AuthContext.js";
+import { useEffect } from "react";
 
 function App() {
-  const context = useContext(AuthContext);
-  const { isAuth } = context;
 
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!localStorage.getItem("auth")) {
+      navigate("/login");
+    }
+  }, []);
+
+  const isAuthenticated = localStorage.getItem("auth");
+
+  
   return (
-    <Router>
-      {isAuth && (
+    <>
+      {isAuthenticated && (
         <div>
           <SideBar />
           <Logo />
@@ -37,20 +44,19 @@ function App() {
 
       <div className="mainSection">
         <Routes>
-          {/* Redirect based on authentication */}
-          <Route path="/" element={isAuth ? <Dashboard /> : <Navigate to="/login" />} />
-          <Route path="/notes" element={isAuth ? <Notes /> : <Navigate to="/login" />} />
-          <Route path="/viewnote/:noteId" element={isAuth ? <ViewNote /> : <Navigate to="/login" />} />
-          <Route path="/addnote" element={isAuth ? <AddNote /> : <Navigate to="/login" />} />
-          <Route path="/editnote/:noteId" element={isAuth ? <EditNotes /> : <Navigate to="/login" />} />
-          <Route path="/tasks" element={isAuth ? <Tasks /> : <Navigate to="/login" />} />
-          <Route path="/viewtask/:taskId" element={isAuth ? <ViewTask /> : <Navigate to="/login" />} />
-          <Route path="/stickywall" element={isAuth ? <StickyWall /> : <Navigate to="/login" />} />
+          <Route path="/" element={isAuthenticated ? <Dashboard /> : <Login/>} />
+          <Route path="/notes" element={isAuthenticated ? <Notes /> : <Login/>} />
+          <Route path="/viewnote/:noteId" element={isAuthenticated ? <ViewNote /> : <Login/>} />
+          <Route path="/addnote" element={isAuthenticated ? <AddNote /> : <Login/>} />
+          <Route path="/editnote/:noteId" element={isAuthenticated ? <EditNotes /> : <Login/>} />
+          <Route path="/tasks" element={isAuthenticated ? <Tasks /> : <Login/>} />
+          <Route path="/viewtask/:taskId" element={isAuthenticated ? <ViewTask /> : <Login/>} />
+          <Route path="/stickywall" element={isAuthenticated ? <StickyWall /> : <Login/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
-    </Router>
+    </>
   );
 }
 
