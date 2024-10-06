@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import {useNavigate} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import NoteContext from '../../ContextApi/NotesContext/NoteContext'
 
 
@@ -30,15 +30,18 @@ function AddNote() {
       </div>
       <div className="titleInput">
         <label htmlFor="title" className="form-label">Title</label>
-        <input type="title" className="form-control" name='title' onChange={onChange}/>
+        <input type="title" className="form-control" name='title' onChange={onChange} maxLength={30}/>
       </div>
       <div className="contentInput">
         <label htmlFor="content" className="form-label">Content</label>
-        <textarea className="contentarea form-control" rows="13" name='content' onChange={onChange}></textarea>
+        <textarea className="contentarea form-control" rows="13" name='content' onChange={onChange} maxLength={2000}></textarea>
+      </div>
+      <div>
+        <i>{note.content.length}/2000</i>
       </div>
       <div className='addNotebtns'>
-          <button onClick={handleSave}>Save</button>
-          <button>Cancel</button>
+          <button onClick={handleSave} className='btn btn-dark'>Save</button>
+          <Link className='btn btn-danger' to="/notes">Cancel</Link>
       </div>
       </div>
     </>

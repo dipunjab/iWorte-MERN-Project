@@ -5,7 +5,7 @@ import StickyContext from '../../../ContextApi/StickyNotesContext/StickyContext'
 
 
 function StickyNotes({notes}) {
-  let bgColor = notes.color || "black"
+  let bgColor = notes.color || "red"
 
   const context = useContext(StickyContext)
   const {deleteStickyNote} = context

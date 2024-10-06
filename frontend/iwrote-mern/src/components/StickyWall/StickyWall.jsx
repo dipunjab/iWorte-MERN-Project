@@ -9,6 +9,7 @@ function StickyWall() {
 
     const context = useContext(StickyContext)
     const { stickyNotes, getAllStickyNotes, addStickyNote } = context
+    const [isModalOpen, setModalOpen] = useState(false);
 
     const [note, setNote] = useState({ content: '', color: '' })
 
@@ -19,22 +20,20 @@ function StickyWall() {
             navigate("/login")
         }
     }, [])
+
     const modalRef = useRef(null);
 
     const handleSave = async (e) => {
         e.preventDefault()
-        await addStickyNote(note.content, note.color)
-        alert("StickyNote Added")
-        setNote({ content: '', color: '' })
-        await getAllStickyNotes();
-
-        // Using Bootstrap's modal method to hide it
-        const modalElement = modalRef.current;
-        if (modalElement) {
-            const bootstrapModal = window.bootstrap.Modal.getInstance(modalElement); // Get the Bootstrap modal instance
-            if (bootstrapModal) {
-                bootstrapModal.hide();
-            }
+        try {
+            await addStickyNote(note.content, note.color)
+            alert("StickyNote Added")
+            setNote({ color: '', content: '' })
+            await getAllStickyNotes();
+            setModalOpen(false)
+        } catch (error) {
+            console.error("Failed to add note:", error);
+            alert("Error adding note. Please try again.");
         }
     }
 
@@ -47,13 +46,12 @@ function StickyWall() {
     return (
         <>
             <div>
-                <div className='addTask'>
-                    <div ref={modalRef} className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div ref={modalRef} className={`modal fade ${isModalOpen ? 'show' : ''}`} style={{ display: isModalOpen ? 'block' : 'none' }} aria-labelledby="exampleModalLabel" aria-hidden={!isModalOpen}>
                         <div className="modal-dialog">
                             <div className="modal-content">
                                 <div className="modal-header">
                                     <label htmlFor="color" className='m-2'><strong>Color:</strong></label>
-                                    <select value="blue" onChange={onChange} name="color" >
+                                    <select onChange={onChange} name="color" >
                                         <option value="red" style={{ color: "red" }}>Red</option>
                                         <option value="orange" style={{ color: "orange" }}>orange</option>
                                         <option value="blue" style={{ color: "blue" }}>blue</option>
@@ -80,8 +78,8 @@ function StickyWall() {
                     <button
                         type='button'
                         className="addNotebtn btn btn-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"><img src={addnotepng} alt="addnote" /><span style={{ color: "black" }}>Add StickyNote</span></button>
+                        onClick={()=> setModalOpen(true)}
+                        ><img src={addnotepng} alt="addnote" /><span style={{ color: "black" }}>Add StickyNote</span></button>
                 </div>
                 <div className="container">
                     <div className='row gy-2 my-3'>
@@ -91,7 +89,6 @@ function StickyWall() {
                             )) : <p>No Notes available</p>}
                     </div>
                 </div>
-            </div>
         </>
     )
 }

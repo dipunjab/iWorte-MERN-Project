@@ -37,6 +37,9 @@ function NotesCard({ notes }) {
               <span style={{ color: "red" }}> Read more...</span>
             </>
             ) : notes.content}</p>
+            <div>
+              <i>{notes.content.length}/2000</i>
+            </div>
         </div>
       </div>
     </div>

@@ -38,7 +38,6 @@ function SideBar() {
                 <div className='lower-items'>
                     <nav className='nav-item'>
                         <ul className='nav-item-ul'>
-                            <li>Mode</li>
                             <li><Link to="/settings" className='linkText'><img src={settingpng} alt="" />Settings</Link></li>
                             <li><Link to='#' className='linkText'  onClick={handleLogout}><img src={logoutpng} alt=""/>Logout</Link></li>
                         </ul>
