@@ -6,7 +6,7 @@ import React from 'react'
 function TasksState(props) {
   const tasksInitial = [];
   const [tasks, settasks] = useState(tasksInitial);
-  const host = "http://localhost:8000/api";
+  const host = "https://i-worte-mernbackend-api.vercel.app/api";
 
 
   const getAllTasks = async () => {

@@ -16,7 +16,7 @@ function AuthState({children}) {
   }, []);
 
   const login = async(email,password) => {
-    const url = 'http://localhost:8000/api/auth/login'
+    const url = 'https://i-worte-mernbackend-api.vercel.app/api/auth/login'
     try {
       const response = await fetch(url,{
         method: "POST",
@@ -41,7 +41,7 @@ function AuthState({children}) {
   };
 
   const getUser = async() => {
-    const url = 'http://localhost:8000/api/auth/getuser'
+    const url = 'https://i-worte-mernbackend-api.vercel.app/api/auth/getuser'
     const response = await fetch(url,{
       method: "GET",
       headers: {

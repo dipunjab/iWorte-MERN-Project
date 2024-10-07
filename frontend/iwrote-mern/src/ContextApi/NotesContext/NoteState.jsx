@@ -6,7 +6,7 @@ import React from 'react'
 function NoteState(props) {
   const notesInitial = [];
   const [notes, setnotes] = useState(notesInitial);
-  const host = "http://localhost:8000/api";
+  const host = "https://i-worte-mernbackend-api.vercel.app/api";
 
 
   const getAllNotes = async () => {

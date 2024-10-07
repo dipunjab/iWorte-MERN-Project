@@ -5,7 +5,7 @@ function StickyState(props) {
   const stickyNotesInitial = []
 
   const [stickyNotes, setStickyNotes] = useState(stickyNotesInitial)
-  const host = 'http://localhost:8000/api/stickynote'
+  const host = 'https://i-worte-mernbackend-api.vercel.app/api/stickynote'
 
   const getAllStickyNotes = async () => {
     const url = `${host}/getallstcikynote`
