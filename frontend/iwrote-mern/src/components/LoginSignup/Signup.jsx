@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import VisualsContainer from './visualsContainer'
+import VisualsContainer from './VisualsContainer'
 import { useNavigate } from 'react-router-dom'
 
  function Signup() {

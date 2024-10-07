@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import VisualsContainer from './visualsContainer'
+import VisualsContainer from './VisualsContainer'
 import "./styles.css"
 import {useNavigate} from "react-router-dom"
 import AuthContext from '../../ContextApi/AuthContext/AuthContext'
