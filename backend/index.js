@@ -32,7 +32,7 @@ app.use("/api/note", noteRouter)
 app.use("/api/task", taskRouter)
 app.use("/api/stickynote", stickyNoteRouter)
 
-app.length("/",(req,res)=>{
+app.get("/",(req,res)=>{
     res.send("hello")
 })
 
