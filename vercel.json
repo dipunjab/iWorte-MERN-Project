@@ -1,0 +1,26 @@
+{
+    "builds": [
+      {
+        "src": "frontend/iwrote-mern/package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "dist"
+        }
+      },
+      {
+        "src": "backend/package.json",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "/backend/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/frontend/dist/$1"
+      }
+    ]
+  }
+  
