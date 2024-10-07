@@ -32,7 +32,9 @@ app.use("/api/note", noteRouter)
 app.use("/api/task", taskRouter)
 app.use("/api/stickynote", stickyNoteRouter)
 
-
+app.length("/",(req,res)=>{
+    res.send("hello")
+})
 
 app.listen(process.env.PORT, () => {
     console.log(`iWrote Backend listening on Port`)
