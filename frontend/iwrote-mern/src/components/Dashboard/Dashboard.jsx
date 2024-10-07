@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import StickyContext from '../../ContextApi/StickyNotesContext/StickyContext'
 
 function Dashboard() {
+  
   const noteContext = useContext(NoteContext)
   const { notes, getAllNotes } = noteContext
 

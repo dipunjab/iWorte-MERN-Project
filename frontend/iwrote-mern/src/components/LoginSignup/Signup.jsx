@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import VisualsContainer from './VisualsContainer'
 import { useNavigate } from 'react-router-dom'
+import Spinner from '../Spinner'
 
  function Signup() {
   const navigate = useNavigate()
   const [credentials, setCredentials] = useState({name:"", email: "", password:""})
+  const [loading, setLoading] = useState(false)
 
   const {name, email, password} = credentials
 
@@ -12,6 +13,7 @@ import { useNavigate } from 'react-router-dom'
     e.preventDefault()
     try {
       const url ='https://i-worte-mernbackend-api.vercel.app/api/auth/createuser'
+      setLoading(true)
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -22,15 +24,17 @@ import { useNavigate } from 'react-router-dom'
   
       const json = await response.json()
       console.log(json);
-          
       if(!response.ok){
+        setLoading(false)        
         alert(json.message)
       }else{
+        setLoading(false)        
         navigate("/login");
         alert("Account Created Successfully")
       }
     
       } catch (error) {
+        setLoading(false)        
         console.log(error)
     }
 
@@ -43,6 +47,7 @@ import { useNavigate } from 'react-router-dom'
 
   return (
     <>
+      {loading && <Spinner/>}
       <div className="signupbtn">
         <button type='button' onClick={() => navigate("/login")}>Login</button>
       </div>

@@ -3,6 +3,8 @@ import VisualsContainer from './VisualsContainer'
 import "./styles.css"
 import {useNavigate} from "react-router-dom"
 import AuthContext from '../../ContextApi/AuthContext/AuthContext'
+import Spinner from '../Spinner'
+
 
 function Login() {
   const navigate = useNavigate()
@@ -15,6 +17,7 @@ function Login() {
 
   const [cred, setCred] = useState({email: "", password: ""})
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const {email, password} = cred
 
@@ -23,10 +26,13 @@ function Login() {
     setError('')
 
     try {
+      setLoading(true)
       await login(email, password)
+      setLoading(false)
       alert("User logged in successfully")
       navigate("/")
     } catch (err) {
+      setLoading(false)
       setError(err.message)
     }
   };
@@ -40,6 +46,7 @@ function Login() {
     <div className="signupbtn">
       <button type='button' onClick={handleSignup}>SignUp</button>
     </div>
+      {loading && <Spinner/>}
     <div className='loginContainer'>
       <VisualsContainer/>
         <form className="loginForm" onSubmit={handleLoginSubmit}>
