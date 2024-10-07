@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
   const handleSubmit = async(e)=>{
     e.preventDefault()
     try {
-      const url ='http://localhost:8000/api/auth/createuser'
+      const url ='https://i-worte-mernbackend-api.vercel.app/api/auth/createuser'
       const response = await fetch(url, {
         method: "POST",
         headers: {
