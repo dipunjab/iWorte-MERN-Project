@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import "./sidebar.css"
-import homepng from "../../assets/home.png"
+import homepng from "../../assets/home2.png"
 import notepng from "../../assets/note.png"
 import taskpng from "../../assets/tasks.png"
 import stickynotepng from "../../assets/sticky.png"
