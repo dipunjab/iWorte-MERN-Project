@@ -16,8 +16,7 @@ const app = express()
 //CORS
 app.use(cors(
     {
-        origin: ["http://localhost:5173", "https://i-worte-mernbackend-api.vercel.app"],
-        credentials: true // If using cookies or authentication headers
+        origin: "https://i-worte-mern-project.vercel.app",
     }
 ))
 
