@@ -14,7 +14,12 @@ connectDB().catch(err => console.log(err))
 const app = express()
 
 //CORS
-app.use(cors())
+app.use(cors(
+    {
+        origin: "http://localhost:5173", // Adjust this to your frontend URL
+        credentials: true // If using cookies or authentication headers
+    }
+))
 
 //midlleWare
 app.use(express.json())
